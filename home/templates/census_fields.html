@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+<table class="table-primary">
+    <tr class="table-primary">
+        <th class="table-primary">Fields</th>
+    </tr>
+    {% for item in fields %}
+    <tr class="table-primary"> 
+        <td class="table-primary"> {{ item }}</td>
+    </tr>
+    {% endfor %}
+</table>
