@@ -4,5 +4,4 @@ from . import api
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('census-fields', views.census_fields, name='census_fields'),
 ]

@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Homepage</h1>
-{% include 'census_fields.html' %}
+
+<form action="/your-name/" method="post">
+    <label for="your_name">Genes: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <label for="your_name">Gene Type: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <label for="your_name">Organ Type: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <label for="your_name">Organ: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
 
 {% endblock %}
