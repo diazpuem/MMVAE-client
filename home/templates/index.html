@@ -2,17 +2,46 @@
 {% block content %}
 <h1>Homepage</h1>
 <form>
-    <fieldset disabled>
+    {% comment %} <fieldset> {% endcomment %}
       <legend>Gene Fields</legend>
       <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Disabled input</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+        <label for="disabledTextInput" class="form-label">Organ Type</label>
+        <select class="form-select" id="inputGroupSelect01" required aria-label="Select Organ">
+          <option value="">Select Organ...</option>
+          <option value="1">Heart</option>
+          <option value="2">Lung</option>
+          <option value="3">Stomach</option>
+          <option value="4">Brain</option>
+          <option><hr class="dropdown-divider"></option>
+          <option value="5">Other Organ</option>
+        </select>
+        <div class="invalid-feedback">select one</div>
       </div>
       <div class="mb-3">
-        <label for="disabledSelect" class="form-label">Disabled select menu</label>
-        <select id="disabledSelect" class="form-select">
-          <option>Disabled select</option>
+        <label for="disabledSelect" class="form-label">Cell Type</label>
+        <select class="form-select" id="inputGroupSelect01" required aria-label="Select Type">
+          <option value="">Select Cell Type...</option>
+          <option value="1">Stem</option>
+          <option value="2">Muscle</option>
+          <option value="3">Nerve</option>
+          <option value="4">Cancer</option>
+          <option><hr class="dropdown-divider"></option>
+          <option value="5">Other Cell</option>
         </select>
+        <div class="invalid-feedback">select one</div>
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Gene Type</label>
+        <select class="form-select" id="inputGroupSelect01" required aria-label="Select Type">
+          <option value="">Select Gene Type...</option>
+          <option value="1">A1BG</option>
+          <option value="2">A2M</option>
+          <option value="3">A1CF</option>
+          <option value="4">XGY2</option>
+          <option><hr class="dropdown-divider"></option>
+          <option value="5">Other Cell</option>
+        </select>
+        <div class="invalid-feedback">select one</div>
       </div>
       <div class="mb-3">
         <div class="form-check">
@@ -23,7 +52,7 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
+    {% comment %} </fieldset> {% endcomment %}
   </form>
 
 {% endblock %}

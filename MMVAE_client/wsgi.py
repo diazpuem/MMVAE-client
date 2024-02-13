@@ -1,5 +1,5 @@
 """
-WSGI config for MMVAE_client project.
+WSGI(Web Server Gateway Interface) config for MMVAE_client project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

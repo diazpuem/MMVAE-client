@@ -1,5 +1,5 @@
 """
-ASGI config for MMVAE_client project.
+ASGI(Asynchronous Server Gateway Interface) config for MMVAE_client project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
