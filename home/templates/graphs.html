@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Graph</h1>
+    {% autoescape off %}
+        <div class="mb-1">
+            {{ bar_plot_div }}
+            {{ volcano_plot_div }}
+        </div>
+    {% endautoescape %}
+{% endblock %}
