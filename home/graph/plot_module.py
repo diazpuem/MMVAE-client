@@ -16,6 +16,7 @@ def volcano_plot(df, label_x, label_y, title):
         point_size = 10,
         effect_size_line_width = 4,
         genomewideline_width = 2,
+        genomewideline_value= 5,
         xlabel= label_x,
         ylabel= label_y,
         title= title,
