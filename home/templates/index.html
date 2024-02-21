@@ -3,55 +3,88 @@
 <h1>Homepage</h1>
 <form>
     {% comment %} <fieldset> {% endcomment %}
-      <legend>Gene Fields</legend>
-      <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Organ Type</label>
-        <select class="form-select" id="inputGroupSelect01" required aria-label="Select Organ">
-          <option value="">Select Organ...</option>
-          <option value="1">Glass</option>
-          <option value="2">Lung</option>
-          <option value="3">Stomach</option>
-          <option value="4">Brain</option>
-          <option><hr class="dropdown-divider"></option>
-          <option value="5">Other Organ</option>
-        </select>
-        <div class="invalid-feedback">select one</div>
-      </div>
-      <div class="mb-3">
-        <label for="disabledSelect" class="form-label">Cell Type</label>
-        <select class="form-select" id="inputGroupSelect01" required aria-label="Select Type">
-          <option value="">Select Cell Type...</option>
-          <option value="1">Stem</option>
-          <option value="2">Muscle</option>
-          <option value="3">Nerve</option>
-          <option value="4">Cancer</option>
-          <option><hr class="dropdown-divider"></option>
-          <option value="5">Other Cell</option>
-        </select>
-        <div class="invalid-feedback">select one</div>
-      </div>
-      <div class="mb-3">
-        <label for="disabledSelect" class="form-label">Gene Type</label>
-        <select class="form-select" id="inputGroupSelect01" required aria-label="Select Type">
-          <option value="">Select Gene Type...</option>
-          <option value="1">A1BG</option>
-          <option value="2">A2M</option>
-          <option value="3">A1CF</option>
-          <option value="4">XGY2</option>
-          <option><hr class="dropdown-divider"></option>
-          <option value="5">Other Cell</option>
-        </select>
-        <div class="invalid-feedback">select one</div>
-      </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-          <label class="form-check-label" for="disabledFieldsetCheck">
-            Can't check this
-          </label>
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col">
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Import patients CSV here:</label>
+              <input class="form-control" type="file" id="formFile">
+            </div>
+            <legend>Filter by:</legend>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="form-label">Organ Type</label>
+              <select class="form-select" id="inputGroupSelect01" required aria-label="Select Organ">
+                <option value="">Select Organ...</option>
+                <option value="1">Glass</option>
+                <option value="2">Lung</option>
+                <option value="3">Stomach</option>
+                <option value="4">Brain</option>
+                <option><hr class="dropdown-divider"></option>
+                <option value="5">Other Organ</option>
+              </select>
+              <div class="invalid-feedback">select one</div>
+            </div>
+            <div class="mb-3">
+              <label for="disabledSelect" class="form-label">Tissue</label>
+              <select class="form-select" id="inputGroupSelect01" required aria-label="Select Type">
+                <option value="">Select Tissue...</option>
+                <option value="1">Connective Tissue</option>
+                <option value="2">Epithelial Tissue</option>
+                <option value="3">Nervous Tissue</option>
+                <option value="4">Muscle Tissue</option>
+                <option><hr class="dropdown-divider"></option>
+                <option value="5">Other Tissue</option>
+              </select>
+              <div class="invalid-feedback">select one</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col">
+            {% autoescape off %}
+              <div class "mb-1">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Genes</th>
+                      <th scope="col">p-value</th>
+                      <th scope="col">adj p-value</th>
+                      <th scope="col">Organ Tissue</th>
+                      <th scope="col">Organ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">TNF</th>
+                      <td>0,000321</td>
+                      <td>0,04321</td>
+                      <td>epicardium</td>
+                      <td>Heart</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">TP53</th>
+                      <td>0,00005423</td>
+                      <td>0,00098</td>
+                      <td>myocardium</td>
+                      <td>Heart</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ESR1</th>
+                      <td>0,0056</td>
+                      <td>0,0076</td>
+                      <td>endocardium</td>
+                      <td>Heart</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+              </div>
+              <div class="mb-1">
+                  {{ volcano_plot_div }}
+              </div>
+            {% endautoescape %}
+          </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
     {% comment %} </fieldset> {% endcomment %}
   </form>
 
