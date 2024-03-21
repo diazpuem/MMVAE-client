@@ -1,0 +1,30 @@
+- Kafka uses sharding/ partitions
+- partitions are not topics - the same topic multiple partitions
+- multiple topics cannot have the same partition
+- partitions are copied and distributed to prevent dataloss when a broker goes down
+- everything is isolated 
+- every entry has an expiration date (example: notifications deleted after a year)
+ 
+- which broker -> which topic -> which partition in the topic
+
+
+Queue vs. pub-sub
+
+- Queues are published once, consumed once, and then deleted. Singular section (aka Topic) in kafka model. 
+- Pub-sub :: the whole kafka model
+
+- cashiers, banks, toll collections
+- Use cases:
+	* a job is executed only once -- gvsu jobs for weekly and daily
+- in visual example: format to 2180p to make it faster have mulitple machines run it faster -----> REASON IN NEXT POINT
+- each topic is it's own queue:: WHY??
+	* multiple partitions queued to be consumed by the consumer group 
+	* can split partitions with machines - see visual example on slides [input in notes]
+*** RULE: You need to have each partition consumed by a consumer --> one to one or many to one
+
+
+DEMO::
+
+
+
+

@@ -1,0 +1,80 @@
+Storm Conceptual Model:
+
+Tuples - a piece code that caused an action
+ 
+Stream - collection of incoming tuples
+---> tweet -> spell check -> nouns -> locations -> [DATABASE]
+
+Spouts - a stream generator that has to be activated by the bolt
+---> Emitting streams
+---> Can use kafka model to gather information :: the pub-sub queues to grab specified data
+
+Bolt - worker who checks the stream and then activates the stream
+---> does something to the data
+---> depending on the complexity more or less machines to increase speed
+
+
+TOPOLOGY:
+
+DAG - Directed Acyclic Graph of Spouts and Bolts
+---> No cycles :: goes one way only
+
+x = lg(x) + 2x
+x = random number
+
+spout produces x -- grabbed from kafka for example
+
+2 bolts:
+- 1. for log(X) - if takes too long add more machines to make it faster
+- 2. for 2x - faster because to change this number you move the binary left one
+		010 = 2   ::  100 = 4
+
+
+
+round-robin - bouncing back and forth between parsed tasks in bolt 
+
+Shuffle : Randomized Round-robin :: evenly distributed
+
+Fields : Tuples with same field value(S) routed to same tasks in bolts
+
+** Batch processing too slow
+---> double the time
+
+Twitter top trends example;
+
+- spout emits tweets continously
+
+split bolt -> changing formats -- two tokens, tokenization of sentences to get the words. 
+
+
+SortBolt cannot be divided because that is the data that will be outputted. If it was split would take more work and time to grab data from different spots in the sortbolt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
