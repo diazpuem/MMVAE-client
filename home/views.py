@@ -4,24 +4,24 @@ import pandas as pd
 from django.http import HttpResponseRedirect
 from .forms import GetAPIRequestData
 
-def file(request):
+def index(request):
     submitted = False
-    if request.method == "POST" and ('_submit' in request.POST):
-        form = GetAPIRequestData(request.POST)
+    if request.method == "POST":
+        print("POST")
+        form = GetAPIRequestData(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/index?submitted=True')
+        else:
+            print(form.errors)
     else:
-        form = GetAPIRequestData
+        form = GetAPIRequestData()
         if 'submitted' in request.GET:
             submitted = True
-    return render(request, '/index.html', {'form':form, 'submitted':submitted})
-
-def index(request):
-    volcano_data = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv')
-    volcano_plot_div = volcano_plot(volcano_data, 'logFC', 'pvalue', 'Volcano Plot')
+            
     context = {
-        'volcano_plot_div': volcano_plot_div,
+        'submitted': submitted,
+        'form': form,
     }
     return render(request, 'index.html', context)
 

@@ -7,5 +7,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('api', include('api.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
-    path("index/", views.file),
+    path("index/", views.index),
 ]
