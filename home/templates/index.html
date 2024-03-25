@@ -5,6 +5,7 @@
       <div class="container">
         <div class="row align-items-start">
           <div class="col">
+            {%comment%} File upload section {%endcomment%}
             <div class="mb-3">
               {% if submitted %}
               {%comment%} add condition for when clipper job is completed vs still processing data {%endcomment%}
@@ -12,7 +13,7 @@
               {% else %}
                 <form action="" method=POST enctype="multipart/form-data">
                   {%comment%} CSV File Input {%endcomment%}
-                  {% csrf_token %}
+                  {% csrf_token %} 
                   {%comment%} NPZ File Input {%endcomment%}
                   {{form.as_p}}
                   <td><input type="submit" value="Submit" name="_submit" class="btn btn-secondary"></td>
@@ -20,6 +21,11 @@
               {% endif %}
             </div>
           </div>
+        </div>
+      </div>
+      <div class="container2">
+        <div class="row align-items-start">
+          {%comment%} Filter uploaded data section {%endcomment%}
           <div class="col">
           <form>
             <legend>Filter by:</legend>
@@ -47,9 +53,9 @@
                 <option><hr class="dropdown-divider"></option>
                 <option value="5">Other Tissue</option>
               </select>
-             {%comment%} <div class="invalid-feedback">select one</div>{%endcomment%}
+             <div class="invalid-feedback">select one</div>
             </div>
-            {%comment%}<td><input type="submit" value="Filter" name="_filter" class="btn btn-secondary"></td>{%endcomment%}
+            <td><input type="submit" value="Filter" name="_filter" class="btn btn-secondary"></td>
             {% autoescape off %}
               <div class "mb-1">
                 <table class="table">
