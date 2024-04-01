@@ -1,40 +1,21 @@
-# import pyrebase
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from firebase_admin import storage
 
 # Use a service account.
-cred = credentials.Certificate('mmvae-e9218-firebase-adminsdk-puokr-c7d6d8f37e.json')
-
+cred = credentials.Certificate('firebase_credentials.json')
 app = firebase_admin.initialize_app(cred)
+storage_client = storage
+bucket = storage_client.bucket('mmvae-e9218.appspot.com')
 
-db = firestore.client()
-
-# config = {
-#   'apiKey': "AIzaSyBla8oQsWu2U7_AtXSWsMvdDkMu6DZ9aXs",
-#   'authDomain': "mmvae-e9218.firebaseapp.com",
-#   'projectId': "mmvae-e9218",
-#   'storageBucket': "mmvae-e9218.appspot.com",
-#   'messagingSenderId': "221017647575",
-#   'appId': "1:221017647575:web:f1c47d2c261bb54c838392",
-#   'measurementId': "G-YNB3HV8GKW",
-#   'databaseURL': "",
-#   'serviceAccount': "mmvae-e9218-firebase-adminsdk-puokr-c7d6d8f37e.json"
-# }
-
-# firebase = pyrebase.initialize_app(config)
-# storage = firebase.storage()
-
-# path = "data"
-
-# ref = db.reference("files")
-# ab=str(1)    
-# all_files = storage.child("files").list_files()
-users_ref = db.collection("files")
-all_files = users_ref.stream()
-
-print(all_files)
-cnt = 0
-for file in all_files:
-  print(f"{file.id} => {file.to_dict()}")
-  cnt += 1
+# List files in a specific folder
+folder_name = 'files'
+blobs = bucket.list_blobs(prefix=folder_name)
+for blob in blobs:
+  if blob.name.endswith('.txt'):
+    print(blob.name)
+    
+# print string from a txt file
+test_file = bucket.blob("files/test_file.txt").download_as_string()
+print(test_file)
