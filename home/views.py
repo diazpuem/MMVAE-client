@@ -6,7 +6,6 @@ from .forms import GetAPIRequestData
 import pyrebase
 from django.core.files.storage import default_storage
 
-
 config = {
   'apiKey': "AIzaSyBla8oQsWu2U7_AtXSWsMvdDkMu6DZ9aXs",
   'authDomain': "mmvae-e9218.firebaseapp.com",
@@ -26,7 +25,6 @@ storage = firebase.storage()
 def index(request):
     submitted = False
     if request.method == "POST":
-        print("POST")
         form = GetAPIRequestData(request.POST, request.FILES)
         if form.is_valid():
             csv_file = request.FILES['csv']

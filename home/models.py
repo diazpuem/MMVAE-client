@@ -1,10 +1,17 @@
 from django.db import models
 
-class APIRequestInput(models.Model):
-    csv = models.FileField()
-    npz = models.FileField()
-    #+ "NPZ: " + self.npz
+def validate_file_extension_csv(value):
+    if not value.name.endswith('.csv'):
+        raise ValidationError(u'Error message')
+    
+def validate_file_extension_npz(value):
+    if not value.name.endswith('.npz'):
+        raise ValidationError(u'Error message')
 
+class APIRequestInput(models.Model):
+    csv = models.FileField(validators=[validate_file_extension_csv])
+    npz = models.FileField(validators=[validate_file_extension_npz])
+    #+ "NPZ: " + self.npz
 
 # Create your models here.
 class RequestFilters(models.Model):
@@ -16,3 +23,5 @@ class RequestFilters(models.Model):
     
     def __str__(self):
         return self.organType + " " + self.tissue
+    
+    
