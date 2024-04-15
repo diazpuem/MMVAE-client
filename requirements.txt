@@ -1,8 +1,8 @@
-django==5.0.2
+django==4.2.11
 django-debug-toolbar==4.3.0
 djangorestframework==3.14.0
 plotly==5.18.0
 dash_bio==1.0.1
-firebase==10.1.5
-pyrebase==3.0.27
+firebase==4.0.1
+
 firebase_admin==6.5.0
