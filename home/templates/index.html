@@ -56,48 +56,6 @@
              <div class="invalid-feedback">select one</div>
             </div>
             <td><input type="submit" value="Filter" name="_filter" class="btn btn-secondary"></td>
-            {% autoescape off %}
-              <div class "mb-1">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Genes</th>
-                      <th scope="col">p-value</th>
-                      <th scope="col">adj p-value</th>
-                      <th scope="col">Organ Tissue</th>
-                      <th scope="col">Organ</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">TNF</th>
-                      <td>0,000321</td>
-                      <td>0,04321</td>
-                      <td>epicardium</td>
-                      <td>Lung</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">TP53</th>
-                      <td>0,00005423</td>
-                      <td>0,00098</td>
-                      <td>myocardium</td>
-                      <td>Lung</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">ESR1</th>
-                      <td>0,0056</td>
-                      <td>0,0076</td>
-                      <td>endocardium</td>
-                      <td>Lung</td>
-                    </tr>
-                  </tbody>
-                </table>
-                
-              </div>
-              <div class="mb-1">
-                  {{ volcano_plot_div }}
-              </div>
-            {% endautoescape %}
           </form>
           </div>
         </div>

@@ -10,7 +10,7 @@ def bar_plot(df, label_x, label_y, title):
 
 
 
-def volcano_plot(df, label_x, label_y, title):
+def volcano_plot(label_x, label_y, title):
     fig = dash_bio.VolcanoPlot(
         dataframe = df,
         point_size = 10,
@@ -23,4 +23,10 @@ def volcano_plot(df, label_x, label_y, title):
     )
     plot_div = plot(fig, output_type='div')
     return plot_div
-    
+
+
+def box_plot(label_x, label_y, title):
+    df = px.data.iris()
+    fig = px.box(df, x=label_x, y=label_y, title= title)
+    plot_div = plot(fig, output_type='div')
+    return plot_div

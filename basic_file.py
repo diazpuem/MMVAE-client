@@ -1,7 +1,6 @@
+import firebase_admin
 from firebase_admin import credentials, storage
-import firebase
 import datetime
-import os
 
 # Use a service account.
 cred = credentials.Certificate('firebase_credentials.json')
@@ -30,14 +29,15 @@ output_file_name = "output_test.txt"
 # output_last_updated = get_file_last_updated(f"files/{output_file_name}", blobs)
 # input_last_updated = ""
 # output_last_updated = ""
-
+input_last_updated = None
+output_last_updated = None
 for blob in blobs:
       print(str(blob.name))
-      if str(blob.name) == "files/{input_file_name}":
+      if str(blob.name) == "files/" + input_file_name:
         # Retrieve the metadata of the blob to get the last updated timestamp
         input_last_updated = blob.updated
         print(input_last_updated)
-      if str(blob.name) == "files/{output_file_name}":
+      if str(blob.name) == "files/" + output_file_name:
         output_last_updated = blob.updated
         print(output_last_updated)
   
