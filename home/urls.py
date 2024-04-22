@@ -5,4 +5,5 @@ from . import api
 urlpatterns = [
     path('', views.index, name='index'),
     path('graphs', views.graphs, name='graphs'),
+    path('results', views.results, name='results'),
 ]
